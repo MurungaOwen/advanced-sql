@@ -3,16 +3,13 @@
 - Advanced joins
 - Functions
 - Triggers
-  
+---
 ### average_price
 
 - SUM
 - COALESCE
 - ROUND
 - GROUP BY
-
----
-
 <details>
   <summary><strong>📖 Average price documentation</strong></summary>
 
@@ -39,5 +36,4 @@ This project includes a SQL script for tracking product prices over time and cal
 | product_id   | INT  | ID of the sold product       |
 | purchase_date| DATE | Date when the sale happened  |
 | units        | INT  | Number of units sold         |
-
 ---
