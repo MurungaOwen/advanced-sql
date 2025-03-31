@@ -6,6 +6,26 @@
 
 ---
 
+<details>
+  <summary>What is COALESCE in SQL?</summary>
+
+  The `COALESCE` function provides a fallback in case a value doesn’t exist.
+
+  **COALESCE is like asking:**  
+  *"Give me the first thing that isn’t empty!"*
+
+  **Example:**  
+  If you say:  
+  👉 `COALESCE(box1, box2, box3)`
+
+  SQL will check:
+  - Box 1: Empty ❌  
+  - Box 2: Empty ❌  
+  - Box 3: Teddy Bear ✅ (Takes this one!)
+
+</details>
+
+
 ### **📊 Average Price Calculation**
 - SUM
 - COALESCE
