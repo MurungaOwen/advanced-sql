@@ -93,3 +93,35 @@ This project includes a SQL script for formatting dates and generating transacti
 | trans_date | DATE NOT NULL                | Date of the transaction                  |
 
 </details>
+
+### **📅 Player Retention Analysis**  
+- **Nested Queries**  
+- **COUNT & DISTINCT**  
+- **DATE_ADD for Date Manipulation**  
+- **ROUND for Decimal Precision**  
+
+<details>
+  <summary><strong>📖 Player Retention Documentation</strong></summary>
+
+#### 📄 SQL Documentation  
+
+This project includes a SQL script that calculates the fraction of players who logged in on the day after their first login, rounded to two decimal places.  
+
+#### 📂 Files  
+- [`date_manipulation.sql`](./date_manipulation.sql) - Contains the database schema, sample data, and query for player retention analysis.
+
+#### 🛠️ Database Schema  
+
+##### 🗂️ `Activity` Table  
+| Column       | Type         | Description                                      |
+|-------------|-------------|--------------------------------------------------|
+| player_id   | INT         | Unique player identifier                         |
+| device_id   | INT         | Device used by the player                        |
+| event_date  | DATE        | Date when the player logged in                   |
+| games_played| INT         | Number of games played before logging out        |
+
+- **Primary Key**: `(player_id, event_date)`, ensuring each player can only log one record per day.
+
+---
+
+
