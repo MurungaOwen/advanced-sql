@@ -94,6 +94,8 @@ This project includes a SQL script for formatting dates and generating transacti
 
 </details>
 
+---
+
 ### **📅 Player Retention Analysis**  
 - **Nested Queries**  
 - **COUNT & DISTINCT**  
@@ -124,4 +126,38 @@ This project includes a SQL script that calculates the fraction of players who l
 
 ---
 
+### **📅 First Year Sales Details**  
+- **Nested Queries**  
+- **MIN for finding the first year**  
+- **GROUP BY for aggregating by product**  
 
+<details>
+  <summary><strong>📖 First Year Sales Documentation</strong></summary>
+
+#### 📄 SQL Documentation  
+
+This project includes a SQL script to select the product id, year, quantity, and price for the first year of every product sold.  
+
+#### 📂 Files  
+- [`first_year_sales.sql`](./first_year_sales.sql) - Contains the query to retrieve the first year sales details.  
+
+#### 🛠️ Database Schema  
+
+##### 🗂️ `Sales` Table  
+| Column      | Type  | Description                      |
+|-------------|-------|----------------------------------|
+| sale_id     | INT   | Unique sale identifier           |
+| product_id  | INT   | ID of the sold product           |
+| year        | INT   | Year when the sale happened      |
+| quantity    | INT   | Number of units sold             |
+| price       | INT   | Price of the product per unit    |
+
+##### 🗂️ `Product` Table  
+| Column       | Type    | Description                      |
+|--------------|---------|----------------------------------|
+| product_id   | INT     | Unique product identifier        |
+| product_name | VARCHAR | Name of the product              |
+
+</details>
+
+---
