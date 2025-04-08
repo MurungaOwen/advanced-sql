@@ -44,6 +44,19 @@
 -- +----+---------+
 -- Explanation: 
 -- Note that if the number of students is odd, there is no need to change the last one's seat.
+
+CREATE TABLE Seat (
+    id INT PRIMARY KEY,
+    student VARCHAR(255)       
+);
+
+INSERT INTO Seat (id, student) VALUES
+(1, 'Abbot'),
+(2, 'Doris'),
+(3, 'Emerson'),
+(4, 'Green'),
+(5, 'Jeames');
+
 SELECT
     id,
     IFNULL(
