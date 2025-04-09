@@ -33,6 +33,30 @@
 -- (movie_id, user_id) is the primary key (column with unique values) for this table.
 -- This table contains the rating of a movie by a user in their review.
 -- created_at is the user's review date. 
+
+-- Movies table
+CREATE TABLE Movies (
+    movie_id INT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL
+);
+
+-- Users table
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+);
+
+-- MovieRating table
+CREATE TABLE MovieRating (
+    movie_id INT,
+    user_id INT,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    created_at DATE NOT NULL,
+    PRIMARY KEY (movie_id, user_id),
+    FOREIGN KEY (movie_id) REFERENCES Movies(movie_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
 WITH movie_rated_high AS(
     SELECT M.movie_id, title, AVG(rating) AS average FROM MovieRating MR 
     LEFT JOIN Movies M ON M.movie_id = MR.movie_id  
