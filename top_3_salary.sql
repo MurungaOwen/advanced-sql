@@ -96,3 +96,33 @@ CREATE TABLE Employee (
     departmentId INT,
     FOREIGN KEY (departmentId) REFERENCES Department(id)
 );
+
+-- Insert into Department
+INSERT INTO Department (id, name) VALUES
+(1, 'IT'),
+(2, 'Sales');
+
+-- Insert into Employee
+INSERT INTO Employee (id, name, salary, departmentId) VALUES
+(1, 'Joe', 85000, 1),
+(2, 'Henry', 80000, 2),
+(3, 'Sam', 60000, 2),
+(4, 'Max', 90000, 1),
+(5, 'Janet', 69000, 1),
+(6, 'Randy', 85000, 1),
+(7, 'Will', 70000, 1);
+
+--solution
+WITH ranked_data AS
+(
+    SELECT
+        *,
+        DENSE_RANK() OVER(PARTITION BY department ORDER BY salary DESC) AS rnk
+    FROM (
+        SELECT 
+            E.id, E.name, salary, D.name AS department
+        FROM Employee E LEFT JOIN Department D ON E.departmentId = D.id
+    ) AS data
+)
+SELECT department AS Department, name AS Employee, salary AS Salary
+FROM ranked_data WHERE rnk <= 3;
