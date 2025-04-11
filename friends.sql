@@ -45,3 +45,34 @@ CREATE TABLE RequestAccepted (
     accept_date DATE NOT NULL,
     PRIMARY KEY (requester_id, accepter_id)
 );
+
+--solution WITH total_requests AS (
+    SELECT requester_id AS user, COUNT(*) AS total_requests
+    FROM RequestAccepted
+    GROUP BY requester_id
+), 
+total_acceptance AS (
+    SELECT accepter_id AS user, COUNT(*) AS total_accepted
+    FROM RequestAccepted
+    GROUP BY accepter_id
+), 
+combined AS (
+    SELECT user, total_requests, 0 AS total_accepted
+    FROM total_requests
+    UNION ALL
+    SELECT user, 0 AS total_requests, total_accepted
+    FROM total_acceptance
+),
+user_totals AS (
+    SELECT 
+        user AS id,
+        SUM(total_requests) + SUM(total_accepted) AS num
+    FROM combined
+    GROUP BY user
+)
+
+SELECT id, num
+FROM user_totals
+ORDER BY num DESC
+LIMIT 1;
+
